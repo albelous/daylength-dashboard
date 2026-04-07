@@ -58,7 +58,7 @@
       .toolbar { gap: 6px; }
       .tool-btn { flex: 1 1 calc(50% - 6px); padding: 10px 8px; font-size: 13px; }
       .controls { grid-template-columns: 1fr; gap: 10px; }
-      .control-card {.date-pickers div div {display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}}
+      .control-card { padding: 8px; }
       label { font-size: 13px; }
       select { font-size: 13px; }
       .legend { gap: 8px; }
@@ -88,12 +88,12 @@
         </div>
         <div class="controls">
           <div class="control-card">
-            <label >Начало интервала</label>
-            <select id="startYear"></select><select id="startMonth"></select><select id="startDay"></select>
+            <label for="startDate">Начало интервала</label>
+            <select id="startDate"></select>
           </div>
           <div class="control-card">
-            <label >Конец интервала</label>
-            <select id="endYear"></select><select id="endMonth"></select><select id="endDay"></select>
+            <label for="endDate">Конец интервала</label>
+            <select id="endDate"></select>
           </div>
         </div>
         <div id="legend" class="legend"></div>
@@ -121,7 +121,7 @@ function fmtDateRu(s){ const d=parseISO(s); return d.toLocaleDateString('ru-RU')
 
 fetch('./assets/daylength_data.json').then(r=>r.json()).then(data => {
   const allDates = [...new Set(data.records.map(r => r.date))];
-  const getDate = (prefix)
+  const startSel = document.getElementById('startDate');
   const endSel = document.getElementById('endDate');
   allDates.forEach(d => {
     const o1 = new Option(d, d); const o2 = new Option(d, d);
