@@ -242,8 +242,8 @@ fetch('./assets/daylength_data.json').then(r=>r.json()).then(data => {
     const box = document.getElementById('chartBox');
     const oldStyle = box.style.width;
     box.style.width = box.getBoundingClientRect().width + 'px';
-    if (!window.html2canvas) await loadScript('./libs/html2canvas.min.js');
-    if (!window.jspdf || !window.jspdf.jsPDF) await loadScript('./libs/jspdf.umd.min.js');
+    if (!window.html2canvas) await loadScript('https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js');
+    if (!window.jspdf || !window.jspdf.jsPDF) await loadScript('https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js');
     const canvas = await html2canvas(box, { scale: 2, backgroundColor: '#ffffff', useCORS: true });
     const img = canvas.toDataURL('image/png');
     const { jsPDF } = window.jspdf;
